@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const connectionstr = "mongodb://localhost:27017/khareedlodb";
 
 const options = {
@@ -7,7 +6,7 @@ const options = {
     pooleSize: 10
 }
 
-mongoose.connect (connectionstr, options).then(
+mongoose.connect( connectionstr, options ).then(
     () => {
         console.log("Database Connection Established.")
     },
