@@ -1,0 +1,4 @@
+{
+    "connectionstr" : "mongodb://localhost:27017/khareedlodb",
+    "secret": "To verify jwt token during login session"
+}
