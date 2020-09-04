@@ -15,7 +15,7 @@ router.post('/register', register)
 router.get('/', getAll)
 router.get('/current', get)
 router.get('/:id', getById)
-router.put('/:id', update)
+router.patch('/:id', update)
 router.delete('/:id', remove)
 
 module.exports = router
