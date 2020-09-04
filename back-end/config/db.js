@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
-const connectionstr = "mongodb://localhost:27017/khareedlodb";
+const config = require('./config.json')
 
-const options = {
-    reconnectTries: Number.MAX_VALUE,
-    pooleSize: 10
+const connectionOptions = {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true, 
+    useFindAndModify: false
 }
-
-mongoose.connect( connectionstr, options ).then(
+mongoose.connect( config.connectionstr, connectionOptions ).then(
     () => {
         console.log("Database Connection Established.")
     },
@@ -14,3 +15,9 @@ mongoose.connect( connectionstr, options ).then(
         console.log("Error connecting to database.", err)
     }
 )
+
+mongoose.Promise = global.Promise
+
+module.exports = {
+    User: require('../models/users/usersModel')
+}
