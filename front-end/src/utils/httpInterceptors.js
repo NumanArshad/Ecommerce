@@ -3,14 +3,14 @@ const axiosInstance=axios.create({
     baseURL:process.env.REACT_APP_BASE_URL
 })
 // axios.defaults.baseURL=process.env.REACT_APP_BASE_URL
-// httpConfig.interceptors.request.use(config =>{
+axiosInstance.interceptors.request.use(config =>{
 
-//   config.headers.common['Authorization']=localStorage.getItem("token")
-//   return config
+  config.headers.common['Authorization']=`Bearer ${localStorage.getItem("token")}`
+  return config
 
-// },(err)=>{
-    
-//     return Promise.reject(err) 
-// })
+},(err)=>{
+  console.log("error is ",err)
+    return Promise.reject(err) 
+})
 
 export default axiosInstance

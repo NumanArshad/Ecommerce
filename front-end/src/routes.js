@@ -16,7 +16,7 @@ import AdminDashboard from './admin/adminSetting/dashboard';
 const ProtectedRoute=({component:Component,...rest})=>{
     const {isAuthenticated,user}=useSelector(state=>state.authReducer)
     return(<Route {...rest} render={(props)=>{
-        return (isAuthenticated?<Component {...props} /> :<Redirect to={{pathname:"/login",state:{from:props.location}}} />)
+        return (!isAuthenticated?<Component {...props} /> :<Redirect to={{pathname:"/login",state:{from:props.location}}} />)
     }} />)
 }
 

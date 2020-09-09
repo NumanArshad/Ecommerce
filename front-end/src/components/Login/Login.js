@@ -1,37 +1,44 @@
 import React, { useState } from "react"
-import {login} from "../../actions/auth"
-import { useDispatch,useSelector } from "react-redux"
+import { login } from "../../actions/auth"
+import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router"
-const Login=()=>{
-    const [formData,handleData]=useState({email:"",password:""})
-    const {username,password}=formData
-    const dispatch=useDispatch()
-    
-    const {isAuthenticated}=useSelector(state=>state.authReducer)
+import style from "../../assets/css/login.module.css"
+const Login = () => {
+    const [formData, handleData] = useState({ email: "", password: "" })
+    const { username, password } = formData
+    const dispatch = useDispatch()
 
-    if(isAuthenticated){
+    const { isAuthenticated } = useSelector(state => state.authReducer)
+
+    if (isAuthenticated) {
         return (<Redirect to="/dashboard" />)
     }
 
-    const handleChange=e=>{
-        const {name,value}=e.target
-        handleData({...formData,[name]:value})
+    const handleChange = e => {
+        const { name, value } = e.target
+        handleData({ ...formData, [name]: value })
     }
-    const handleSubmit=()=>{
-     //   alert(JSON.stringify(formData))
+    const handleSubmit = () => {
+        //   alert(JSON.stringify(formData))
         dispatch(login(formData))
 
     }
-    return(
-    <>    
-    <h1>login here</h1>
-    <div style={{display:"inline-block"}}>
-   <input type="text" placeholder="email" name="email" value={username}
-        onChange={e=>handleChange(e)} />
-        <input type="text" placeholder="password" name="password" value={password} 
-        onChange={e=>handleChange(e)} />
-       <button onClick={handleSubmit}>Login</button>
-        </div></>
-)
+    return (
+        <div className={style.login_container}>
+
+            <h1>login here</h1>
+
+            <input type="text" placeholder="email" name="email" value={username}
+                onChange={e => handleChange(e)} />
+            <input type="text" placeholder="password" name="password" value={password}
+                onChange={e => handleChange(e)} />
+            <button className={style.login_btn} onClick={handleSubmit}>Login</button>
+            <div className={style.frgt_container}>
+                <a href="#" className={style.forget_link}>Forget password</a>
+                <a href="#" >Don't have account SignUp here</a>
+            </div>
+
+        </div>
+    )
 }
 export default Login
