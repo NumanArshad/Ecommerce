@@ -1,14 +1,14 @@
 import React from 'react';
+import ReactDom from "react-dom"
 import * as serviceWorker from './serviceWorker';
 import store from './store/index'
 import Root from './routes';
-import { Provider } from 'react-redux';
-import { render } from '@testing-library/react';
-
-render(
+import {Provider} from "react-redux"
+ReactDom.render(
   <Provider store={store}>
     <Root />
-  </Provider>,
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
