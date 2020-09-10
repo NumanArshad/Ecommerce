@@ -1,7 +1,7 @@
 import React from "react"
 import SideBar from "./sideBar"
 import Header from "./header"
-import AdminRoute from "./routes"
+// import AdminRoute from "./routes"
 
 const AdminContent=(props)=>{
     return(

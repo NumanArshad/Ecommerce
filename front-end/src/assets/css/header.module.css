@@ -5,14 +5,12 @@ body{
 .container{
     display: flex;
   align-items: center;
+  font-size: 0.25 rem;
   background-color:black;
- 
- 
-
-}
+ }
 .container>div{
 width:200px;
-padding:10px;
+padding:10px 0px;
 text-align: center;
 background: grey;
 color:black;
@@ -56,11 +54,37 @@ position: relative;
     }
 
   @media screen and (max-width:450px){
-        .container{
-            display: block;
-          }
-        .container>div{
-          width:100%;
-          text-align: center
-            }
+     
+    /* .container{
+      display: block;
+    }
+  .container>div{
+    width:100%;
+    text-align: center
+      } */
+     
+      .container div:not(:first-child){
+display: none;
+      }
+      .container .responsive {
+        position: relative;
+      }
+      .container .responsive div{
+        float:none;
+        display: block;
+      }
+
        }
+
+
+       header{
+         position: sticky;
+         top:0;
+         height:3rem;
+         width:100%
+       }
+
+section{
+  height:calc(100vh-3rem);
+  width:100%
+}

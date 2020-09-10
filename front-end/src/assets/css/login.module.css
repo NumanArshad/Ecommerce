@@ -18,8 +18,12 @@ padding:10px;
 border: 1px solid;
 border-radius: 4px;
 margin:10px 0px 10px 0px;
-font-size: 1.0em
+font-size: 1.0em;
+
 }
+
+
+
 
 .login_container > .login_btn{
     width:10em;
@@ -43,17 +47,22 @@ text-decoration: none;
 
 
 }
-
-
-
+label{
+    width:21.5em;
+  
+}
 
 @media screen and (max-width: 320px) {
-    .login_container > input[type="text"]{
+  .login_container > input[type="text"]{
 width:90%
  }
  .frgt_container{
    width:19em;
-flex-direction: column
-
  }
+ 
   }
+  @media screen and (max-width: 370px) {
+    label{
+      
+      }
+    }

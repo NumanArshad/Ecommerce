@@ -1,7 +1,7 @@
 import React from "react"
 import {BrowserRouter,Switch, Redirect,Route} from "react-router-dom"
 import AdminDashboard from "./dashboard"
-import AdminContent from "./adminContent"
+// import AdminContent from "./adminContent"
 import NewProduct from "./addProducts"
 import AdminSetting from "./AdminSetting"
 

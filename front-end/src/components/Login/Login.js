@@ -27,15 +27,16 @@ const Login = () => {
         <div className={style.login_container}>
 
             <h1>login here</h1>
-
+            <label>Email</label>
             <input type="text" placeholder="email" name="email" value={username}
                 onChange={e => handleChange(e)} />
+                    <label>Password</label>
             <input type="text" placeholder="password" name="password" value={password}
                 onChange={e => handleChange(e)} />
             <button className={style.login_btn} onClick={handleSubmit}>Login</button>
             <div className={style.frgt_container}>
-                <a href="#" className={style.forget_link}>Forget password</a>
-                <a href="#" >Don't have account SignUp here</a>
+                <a href="/fj" className={style.forget_link}>Forget password</a>
+                <a href="/fh" >Don't have account SignUp here</a>
             </div>
 
         </div>

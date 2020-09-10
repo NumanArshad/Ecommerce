@@ -1,7 +1,7 @@
 import React from "react"
-import style from "../../assets/css/header.module.css"
+import style from "../../assets/css/header.module.css" //responsive
 const Header = () => {
-    return (<div className={style.container}>
+    return (<div className={`${style.container} ${style.responsive}`}>
         <div>
             Home
       </div>
