@@ -7,10 +7,10 @@
 
 }
 
-
 .login_container > h1::first-letter{
     text-transform: capitalize
 }
+
 .login_container > input[type="text"]{
 width:20em;
 height: 20px;
@@ -19,11 +19,8 @@ border: 1px solid;
 border-radius: 4px;
 margin:10px 0px 10px 0px;
 font-size: 1.0em;
-
+outline: none
 }
-
-
-
 
 .login_container > .login_btn{
     width:10em;
@@ -33,8 +30,8 @@ font-size: 1.0em;
     border-radius: 2px;
     color:white;
     margin-top:20px
-
 }
+
 .frgt_container{
     width:22em;
    display: flex;
@@ -42,27 +39,27 @@ font-size: 1.0em;
     justify-content: space-between;
     margin-top:20px
 }
+
 .frgt_container>a{
 text-decoration: none;
-
-
 }
+
 label{
-    width:21.5em;
-  
-}
+    width:21em;
+   }
 
 @media screen and (max-width: 320px) {
   .login_container > input[type="text"]{
 width:90%
  }
- .frgt_container{
-   width:19em;
+
+ label{
+    width:17em;
+  }
  }
  
-  }
-  @media screen and (max-width: 370px) {
-    label{
-      
+ @media screen and (max-width: 370px) {
+    .frgt_container label{
+        width:19em;
       }
     }

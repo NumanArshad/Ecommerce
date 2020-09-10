@@ -1,20 +1,19 @@
 import React from "react"
-import {BrowserRouter,Switch, Redirect,Route} from "react-router-dom"
+import {BrowserRouter,Switch,Route} from "react-router-dom"
 import AdminDashboard from "./dashboard"
-// import AdminContent from "./adminContent"
-import NewProduct from "./addProducts"
-import AdminSetting from "./AdminSetting"
 
+import CreateEditProduct from "../components/products/createEditProduct"
+import Products from "../components/products/Products"
 const AdminRoute=()=>{
-    return(<BrowserRouter>
+    return(
     <Switch>
-        <Redirect from="/admin/dashboard/" exact to="/admin/dashboard/main" />
-        <AdminSetting path="/admin/dashboard/main" exact component={AdminDashboard} />
-        <AdminSetting path="/admin/dashboard/new" exact component={NewProduct} />
-        <Route  path="**" exact component={()=><h2>Not dashboard found</h2>}/>
-          
+        {/* <Redirect from="/admin/dashboard/" exact to="/admin/dashboard/main" /> */}
+        <Route path="/admin/dashboard" exact component={AdminDashboard} />
+      <Route path="/admin/dashboard/products/new" exact component={CreateEditProduct} />
+            <Route path="/admin/dashboard/products" exact component={Products} />
+            <Route  path="*" exact component={()=><h2>Not dashboard found</h2>}/>
     </Switch>
-    </BrowserRouter>)
+  )
 }
 
 export default AdminRoute

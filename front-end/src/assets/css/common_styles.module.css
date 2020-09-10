@@ -1,0 +1,32 @@
+/* user dashboard below content layouts */
+.main{  
+    background-color: rgb(218, 218, 218);
+ height: 100vh;
+}
+
+/* all forms container */
+.body_container{
+    margin:20px auto;
+background-color:white;
+ padding:20px;
+width:50%
+}
+
+.body_container>.save_btn{
+  background-color: blueviolet;
+padding:10px 20px;
+color: white;
+margin-right: 5px;
+font-size:0.8em;
+border: 1px solid blueviolet;
+border-radius: 2px;
+outline: none;
+cursor: pointer;
+}
+
+@media screen and (max-width: 521px) {
+  .body_container{
+      width:87%;
+   }
+
+}

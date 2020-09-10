@@ -3,16 +3,18 @@ import { login } from "../../actions/auth"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router"
 import style from "../../assets/css/login.module.css"
+import {useHistory} from "react-router-dom"
 const Login = () => {
     const [formData, handleData] = useState({ email: "", password: "" })
     const { username, password } = formData
+    const history=useHistory()
     const dispatch = useDispatch()
-
-    const { isAuthenticated } = useSelector(state => state.authReducer)
-
+  const { isAuthenticated } = useSelector(state => state.authReducer)
     if (isAuthenticated) {
         return (<Redirect to="/dashboard" />)
     }
+
+
 
     const handleChange = e => {
         const { name, value } = e.target
@@ -35,8 +37,8 @@ const Login = () => {
                 onChange={e => handleChange(e)} />
             <button className={style.login_btn} onClick={handleSubmit}>Login</button>
             <div className={style.frgt_container}>
-                <a href="/fj" className={style.forget_link}>Forget password</a>
-                <a href="/fh" >Don't have account SignUp here</a>
+                <a href="/" onClick={(e)=>{e.preventDefault()}}   className={style.forget_link}>Forget password</a>
+                <a href="/"  onClick={(e)=>{e.preventDefault();history.push("/signup")}}  >Don't have account SignUp here</a>
             </div>
 
         </div>
