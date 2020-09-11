@@ -7,7 +7,7 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case AUTH_SUCCESS:
-            
+          
             return { ...state, isAuthenticated:true,user:action.payload }
         default:
             return { ...state }

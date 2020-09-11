@@ -6,6 +6,7 @@ function App() {
   const [isVisible,setVisible]=useState(true)
 
   useEffect(()=>{
+
 const path=window.location.pathname.split('/')
 if(path.includes("admin") || path.includes("login") || path.includes("signup")){
   setVisible(false)

@@ -12,10 +12,10 @@ const AdminRoute=()=>{
     <Switch>
         {/* <Redirect from="/admin/dashboard/" exact to="/admin/dashboard/main" /> */}
         <Route path="/admin/dashboard" exact component={AdminDashboard} />
-      <Route path="/admin/dashboard/users/new" exact component={New} />
+      <Route path="/admin/dashboard/users/new" exact component={CreateEditProduct} />
       <Route path="/admin/dashboard/users" exact component={Users} />
             <Route path="/admin/dashboard/products" exact component={Products} />
-            <Route path="/admin/dashboard/products/new" exact component={CreateEditProduct} />
+            <Route path="/admin/dashboard/products/new" exact component={New} />
             <Route path="/admin/dashboard/categories/new" exact component={CreateEditCategory} />
             <Route path="/admin/dashboard/categories" exact component={Categories} />
             <Route  path="*" exact component={()=><h2>Not dashboard found</h2>}/>

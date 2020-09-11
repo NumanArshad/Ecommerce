@@ -1,15 +1,16 @@
 import React from "react"
 import style from "../../assets/css/header.module.css" //responsive
-import {useHistory} from "react-router-dom"
+
+import history from "../../utils/customHistory"
 const Header = () => {
-    const history=useHistory()
+    // const history=useHistory()
     return (<div className={`${style.container} ${style.responsive}`}>
         <div onClick={()=>history.push("/dashboard")}>
             Home
       </div>
-        <div>Users</div>
+        {/* <div>Users</div> */}
       
-        <div onClick={()=>history.push("/admin/dashboard/products")}>
+        <div onClick={()=>history.push("/products")}>
             Products
           </div>
         <div>Categories</div>

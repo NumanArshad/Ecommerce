@@ -1,8 +1,5 @@
-import React, { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { fetchProducts } from "../../actions/products"
+import React from "react"
 
-import Header from "../../common/layouts/header"
 import style from "../../assets/css/dashboard.module.css"
 import img from "../../assets/images/img.png"
 

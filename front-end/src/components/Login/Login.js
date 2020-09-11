@@ -1,17 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { login } from "../../actions/auth"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router"
 import style from "../../assets/css/login.module.css"
 import {useHistory} from "react-router-dom"
+import {roleRedirect} from "../../utils/manageRoles"
 const Login = () => {
     const [formData, handleData] = useState({ email: "", password: "" })
     const { username, password } = formData
     const history=useHistory()
     const dispatch = useDispatch()
-  const { isAuthenticated } = useSelector(state => state.authReducer)
+  const { isAuthenticated,user:{role} } = useSelector(state => state.authReducer)
     if (isAuthenticated) {
-        return (<Redirect to="/dashboard" />)
+   
+        roleRedirect(history,role)
     }
 
 

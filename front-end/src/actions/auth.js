@@ -1,16 +1,16 @@
-import axiosInstance from "../utils/httpInterceptors"
+import axios from "../utils/httpInterceptors"
 import {AUTH_SUCCESS} from "../utils/types"
 
 import JwtDecode from "jwt-decode"
 export const login=(authBody)=>dispatch=>{
-  axiosInstance.post("/login",authBody)
+  axios.post("/login",authBody)
   .then(res=>
     {console.log(JSON.stringify(res))
     dispatch(storeUser(res.data.token))
 })
 }
 export const register=(authBody)=>dispatch=>{
-    axiosInstance.post("/register",authBody).then(res=>dispatch(storeUser(res.data.token)))
+    axios.post("/register",authBody).then(res=>dispatch(storeUser(res.data.token)))
 }
 
 export const logout=()=>dispatch=>{
