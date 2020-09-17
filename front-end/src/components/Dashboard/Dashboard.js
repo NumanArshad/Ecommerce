@@ -7,13 +7,13 @@ const Dashboard = () => {
    
     return (
       
-            <div className={style.image_container}>
-                <img src={img} className={style.img_style} alt="img" />
-                <div className={style.image_content}>
-                    Welcome to ECommerce site
-               </div>
-              </div>
-
+            // <div className={style.image_container}>
+            //     <img src={img} className={style.img_style} alt="img" />
+            //     <div className={style.image_content}>
+            //         Welcome to ECommerce site
+            //    </div>
+            //   </div>
+<>Dashboard</>
     
     )
 }

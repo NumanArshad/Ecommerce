@@ -1,10 +1,22 @@
 import React from "react"
 import style from "../../assets/css/header.module.css" //responsive
 import {useHistory} from "react-router-dom"
+import "../../assets/css/app.css"
 const Appbar = () => {
     const history=useHistory()
   
-    return (<div className={`${style.container} ${style.responsive}`}>
+    return (
+        // <header>
+        //     <ul>
+        //         <li><a onClick={e=>e.preventDefault()} href="/">Home</a></li>
+        //         <li><a href="/">About</a></li>
+        //         <li><a href="/">Services</a></li>
+        //         <li><a href="/">Contact</a></li>
+        //         <li><a href="/">Portfolio</a></li>
+
+        //     </ul>
+        // </header>
+    <div className={`${style.container} ${style.responsive}`}>
         <div onClick={()=>history.push("/admin/dashboard")}>
             Home
       </div>
@@ -33,7 +45,8 @@ const Appbar = () => {
             </div>
        </div>
        
-    </div>)
+    </div>
+    )
 }
 
 export default Appbar

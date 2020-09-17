@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { login } from "../../actions/auth"
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router"
-import style from "../../assets/css/login.module.css"
+
+import style from "../../assets/css/login.module.scss"
 import {useHistory} from "react-router-dom"
 import {roleRedirect} from "../../utils/manageRoles"
 const Login = () => {

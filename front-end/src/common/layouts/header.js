@@ -1,28 +1,69 @@
-import React from "react"
-import style from "../../assets/css/header.module.css" //responsive
+import React from "react";
+import  "../../assets/css/header.module.scss"; //responsive
 
-import history from "../../utils/customHistory"
+// import history from "../../utils/customHistory"
+// import "../../assets/css/app.css";
 const Header = () => {
-    // const history=useHistory()
-    return (<div className={`${style.container} ${style.responsive}`}>
-        <div onClick={()=>history.push("/dashboard")}>
-            Home
-      </div>
-        {/* <div>Users</div> */}
-      
-        <div onClick={()=>history.push("/products")}>
-            Products
-          </div>
-        <div>Categories</div>
-        <div className={style.dropdown}>
-            Account
-            <div className={style.dropdown_content}>
-                <div>Login </div>
-                <div onClick={()=>history.replace("/login")}>SignUp</div>
-            </div>
-       </div>
-       
-    </div>)
+  // const history=useHistory()
+const handleToggle=e=>{
+  e.preventDefault();
+  alert("called")
+  document.getElementsByClassName("dropdwn")[0].classList.toggle("display")
 }
+  return (
+    <>
+      {/* <ul>
+        <li>
+          <a href="#">menu</a>
+        </li>
+        <li>
+          <a href="#">about</a>
+          <ul className="dropdown">
+            <li>
+              <a href="#">menu</a>
+            </li>
+            <li>
+              <a href="#">about</a>
+            </li>
+            <li>
+              <a href="#">services</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">services</a>
+        </li>
+      </ul> */}
+      <div className="menu_header"><i className="fa fa-bars"></i></div>
+      <ul className="menu_content">
+          <li >
+            <a href="#">Home</a>
+          </li>
+          <li >
+            <a href="#" onClick={handleToggle}>About</a>
+            <ul className="dropdwn">
+              <li>
+                <a href="#" >sub1</a>
+              </li>
+              <li>
+                <a href="#">sub2</a>
+              </li>
+              <li>
+                <a href="#">sub3</a>
+              </li>
+            </ul>
+          </li>
 
-export default Header
+          <li >
+            <a href="#">Services</a>
+          </li>
+          <li >
+            <a href="#">Contacts</a>
+          </li>
+        </ul>
+       
+    </>
+  );
+};
+
+export default Header;

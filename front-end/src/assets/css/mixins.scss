@@ -1,0 +1,8 @@
+@mixin desktop_only {
+   
+
+    @media (max-width:370px) {
+        background-color: red;
+    }
+}
+

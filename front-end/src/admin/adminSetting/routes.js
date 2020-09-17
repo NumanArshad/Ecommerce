@@ -5,14 +5,14 @@ import CreateEditCategory from "../components/categories/createEditCategories"
 import CreateEditProduct from "../components/products/createEditProduct"
 import Products from "../components/products/Products"
 import Categories from "../components/categories/categories"
-import New from "../components/products/newProduct"
+import CreateEditUsers from "../components/Users/createEditUsers"
 import Users from "../components/Users/users"
 const AdminRoute=()=>{
     return(
     <Switch>
         {/* <Redirect from="/admin/dashboard/" exact to="/admin/dashboard/main" /> */}
         <Route path="/admin/dashboard" exact component={AdminDashboard} />
-      <Route path="/admin/dashboard/users/new" exact component={New} />
+      <Route path="/admin/dashboard/users/new" exact component={CreateEditUsers} />
       <Route path="/admin/dashboard/users" exact component={Users} />
             <Route path="/admin/dashboard/products" exact component={Products} />
             <Route path="/admin/dashboard/products/new" exact component={CreateEditProduct} />

@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import { useSelector } from 'react-redux';
 import AdminContent from './admin/adminSetting/adminContent';
 import Products from "./components/Dashboard/products"
+import AdminSetting from './admin/adminSetting/AdminSetting';
 
 // if(localStorage.getItem("token")){ //set in authReducer default
 // store.dispatch(storeUser(localStorage.getItem("token")))
@@ -17,7 +18,7 @@ import Products from "./components/Dashboard/products"
 const ProtectedRoute=({component:Component,...rest})=>{
     const {isAuthenticated,user:{role}}=useSelector(state=>state.authReducer)
     return(<Route {...rest} render={(props)=>{
-        return (isAuthenticated && role==="customer" ?<Component {...props} /> :<Redirect to={{pathname:"/login",state:{from:props.location}}} />)
+        return (!isAuthenticated && role!=="customer" ?<Component {...props} /> :<Redirect to={{pathname:"/login",state:{from:props.location}}} />)
     }} />)
 }
 
@@ -30,7 +31,7 @@ const Root = () => (
             <Route path="/signup" exact component={SignUp} />
             <ProtectedRoute path="/dashboard" exact component={Dashboard} />
             <ProtectedRoute path="/products" exact component={Products} />
-        <Route path="/admin/dashboard/:page?"  component={AdminContent} />
+        <AdminSetting path="/admin/dashboard/:page?"  component={AdminContent} />
                 <Redirect from="/" exact to="/dashboard"/>
             <Route  path="*" exact component={()=><h2>Not not found</h2>}/>
             

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import {register} from "../../actions/auth"
 import { useDispatch,useSelector } from "react-redux"
 import { Redirect } from "react-router"
-import style from "../../assets/css/login.module.css"
+import style from "../../assets/css/login.module.scss"
 const SignUp=()=>{
     const [formData,handleData]=useState({email:"",password:"",role:""})
     const {username,password,role}=formData

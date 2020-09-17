@@ -5,12 +5,19 @@ import JwtDecode from "jwt-decode"
 export const login=(authBody)=>dispatch=>{
   axios.post("/login",authBody)
   .then(res=>
-    {console.log(JSON.stringify(res))
-    dispatch(storeUser(res.data.token))
+    {
+        alert(JSON.stringify(res.data))
+        if(res.status===200){
+            dispatch(storeUser(res.data.token))
+        }
+   
 })
 }
 export const register=(authBody)=>dispatch=>{
-    axios.post("/register",authBody).then(res=>dispatch(storeUser(res.data.token)))
+    axios.post("/register",authBody).then(res=>{ if(res.status===200){
+        dispatch(storeUser(res.data.token))
+    }
+    })
 }
 
 export const logout=()=>dispatch=>{
