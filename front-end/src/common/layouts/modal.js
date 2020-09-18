@@ -1,29 +1,55 @@
-import React from "react"
-import commonstyles from "../../assets/css/common_styles.module.css"
-const Modal = ({ label, className,children }) => {
-    return (
-        <div className={commonstyles.modal_body}>
-            <div className={`${commonstyles.modal_content} ${className}`}>
-
-                {/* <div className={commonstyles.form_container}>
-                    <div className={`${commonstyles.form_control} ${commonstyles.flex_100}`}>
-                        <label>Name</label>
-                        <input type="text" placeholder="name" name="email"
-                        />
-                    </div>
-                    <div className={`${commonstyles.form_control} ${commonstyles.flex_100}`}>
-                        <label>Description</label>
-                        <input type="text" placeholder="name" name="email"
-                        />
-                    </div>
-                    <button className={commonstyles.save_btn} >Save</button>
-                    <button className={commonstyles.save_btn} >Cancel</button>
-                </div> */}
-                {children}
+import React from "react";
+const Modal = ({ title, children }) => {
+  return (
+    <>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Launch demo modal
+      </button>{" "}
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                {title}
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body">{children}</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
-
-
-    )
-}
-export default Modal
+      </div>
+    </>
+  );
+};
+export default Modal;
