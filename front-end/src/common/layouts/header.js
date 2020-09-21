@@ -18,22 +18,13 @@ const Header = () => {
             <a href="#">Home</a>
           </li>
           <li>
-            <a href="#" class="toggle_btn">
-              About
-            </a>
-            <ul class="dropdwn">
-              <li>
-                <a href="#">sub1</a>
-              </li>
-              <li>
-                <a href="#">sub2</a>
-              </li>
-              <li>
-                <a href="#">sub3</a>
-              </li>
-            </ul>
+             <a href="#">About</a>
+         
           </li>
-
+          <li>
+             <a href="#">Sell with us</a>
+         
+          </li>
           <li>
             <a href="#">Services</a>
           </li>

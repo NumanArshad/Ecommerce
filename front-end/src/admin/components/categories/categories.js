@@ -63,7 +63,7 @@ const Categories = () => {
               <td>Otto</td>
               <td>@mdo</td>
               <td>
-                <div class="btn-group">
+              <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
                   <button
                     type="button"
                     class="btn btn-primary dropdown-toggle"
@@ -95,7 +95,7 @@ const Categories = () => {
               <td>Otto</td>
               <td>@mdo</td>
               <td>
-                <div class="btn-group">
+                <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
                   <button
                     type="button"
                     class="btn btn-primary dropdown-toggle"
@@ -127,7 +127,7 @@ const Categories = () => {
               <td>Otto</td>
               <td>@mdo</td>
               <td>
-                <div class="btn-group">
+              <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
                   <button
                     type="button"
                     class="btn btn-primary dropdown-toggle"
