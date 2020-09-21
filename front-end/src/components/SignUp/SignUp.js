@@ -9,9 +9,9 @@ const SignUp=()=>{
     const dispatch=useDispatch()
     const {isAuthenticated}=useSelector(state=>state.authReducer)
 
-    if(isAuthenticated){
-        return (<Redirect to="/dashboard" />)
-    }
+    // if(isAuthenticated){
+    //     return (<Redirect to="/dashboard" />)
+    // }
 
 
     const handleChange=e=>{

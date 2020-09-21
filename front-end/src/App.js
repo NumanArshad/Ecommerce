@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "./common/layouts/header";
+import Appbar from "./common/layouts/appbar";
 import Root from "./routes";
 
 function App() {
@@ -9,15 +9,16 @@ function App() {
     if (
       path.includes("admin") ||
       path.includes("login") ||
-      path.includes("signup")
+      // path.includes("signup") ||
+      path.includes("seller")
     ) {
       setVisible(false);
     }
   }, []);
   return (
     <>
-      {isVisible && <Header />}
-      <div class={!path.includes("admin") && "main"}>
+      {isVisible && <Appbar />}
+      <div class={(!path.includes("admin") && !path.includes("seller")) && "main"}>
         <Root />
       </div>
     </>

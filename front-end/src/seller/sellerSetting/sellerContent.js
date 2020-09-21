@@ -1,13 +1,13 @@
 import React from "react"
 import Appbar from "./appbar"
 
-import AdminRoute from "./routes"
-const AdminContent=()=>{
+import SellerRoute from "./routes"
+const SellerContent=()=>{
     return(
     <>  
     <Appbar />
 <div class="container">
-<AdminRoute />
+<SellerRoute />
 
 </div>
 
@@ -16,4 +16,4 @@ const AdminContent=()=>{
     </>
   )
 }
-export default AdminContent
+export default SellerContent

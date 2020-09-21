@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import style from "../../assets/css/login.module.scss"
 import {useHistory} from "react-router-dom"
 import {roleRedirect} from "../../utils/manageRoles"
-const Login = () => {
+const Login = (props) => {
     const [formData, handleData] = useState({ email: "", password: "" })
     const { username, password } = formData
     const history=useHistory()
@@ -27,6 +27,7 @@ const Login = () => {
         dispatch(login(formData))
 
     }
+
     return (
         <div className={style.login_container}>
 

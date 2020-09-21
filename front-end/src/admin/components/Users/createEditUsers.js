@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import mainStyle from "../../../assets/css/common_styles.module.css";
 import InputField from "../../../common/layouts/inputField";
-import Modal from "../../../common/layouts/modal";
 import { newUser } from "../../actions/userActions";
-const CreateEditUsers = ({modal}) => {
+const CreateEditUsers = ({ modal }) => {
   const [formData, handleForm] = useState({
     first: "",
     last: "",
@@ -14,9 +12,9 @@ const CreateEditUsers = ({modal}) => {
     postcode: "",
     city: "",
     address: "",
-    role: "",
+    role: ""
   });
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     handleForm({ ...formData, [name]: value });
   };
@@ -27,16 +25,17 @@ const CreateEditUsers = ({modal}) => {
     dispatch(newUser(formData));
   };
 
+
+
   return (
-    <div class={`container ${!modal && `card`}`}>
+    <div class={`${!modal && `card`}`}>
+
       <div class={`form row ${!modal && `card-body`}`}>
         <InputField
           label="First Name"
           name="firstName"
           placeholder="name here"
-       //   classes="col-md-4 col-sm-6 mb-3"
           classes={`${!modal ? `col-md-4  mb-3` : `col-12`} col-sm-6 mb-3`}
-
         />
         <InputField
           label="Last Name"
@@ -74,6 +73,8 @@ const CreateEditUsers = ({modal}) => {
           placeholder="name here"
           classes="col-12 mb-3"
         />
+        <button class="btn btn-primary ml-3">Save</button>
+        <button class="btn btn-danger ml-2">Cancel</button>
       </div>
     </div>
     //     <div className={mainStyle.body_container}>

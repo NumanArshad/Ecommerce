@@ -14,10 +14,13 @@ const CreateEditCategory = ({ modal }) => {
   const handleSubmit = () => {
     dispatch(newCategory(category));
   };
-
+alert()
   return (
-    <div class={`container ${!modal && `card`}`}>
-      <div class={`form row ${!modal && `card-body`}`}>
+    // <div class={`container ${!modal && `card`}`}>
+    //   <div class={`form row ${!modal && `card-body`}`}>
+
+    <div class={`container card`}>
+    <div class={`form row card-body`}>
         <InputField
           label="Name"
           name="name"

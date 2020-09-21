@@ -7,14 +7,13 @@ const InputField = ({ label, classes,...rest }) => {
     //     <input type={type || "text"} placeholder={placeholder} name={name} {...rest}
     //     />
     // </div>
-    <div class= {classes ?? "col-md-4 mb-3"} >
-      <label htmlFor="validationTooltipUsername">{label}</label>
-      {/* <div class="input-group">
+    <div class={classes ?? "col-md-4 mb-3"} >
+       <div class="input-group">
      <div class="input-group-prepend">
           <span class="input-group-text" id="validationTooltipUsernamePrepend">
             {label}
           </span>
-        </div> */}
+        </div> 
         <input
           class="form-control"
           id="validationTooltipUsername"
@@ -26,7 +25,7 @@ const InputField = ({ label, classes,...rest }) => {
           Please choose a unique and valid username.
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 export default InputField;

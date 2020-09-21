@@ -1,10 +1,10 @@
 import React from "react";
 import "../../assets/css/header.scss"; //responsive
-
-// import history from "../../utils/customHistory"
+// import {useHistory} from "react-router-dom"
+import history from "../../utils/customHistory"
 // import "../../assets/css/app.css";
-const Header = () => {
-  // const history=useHistory()
+const Appbar = () => {
+
 
   return (
     <>
@@ -15,14 +15,14 @@ const Header = () => {
         <span class="logo">KhareedLo</span>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="#" onClick={()=>history.push("home")}>Home</a>
           </li>
           <li>
              <a href="#">About</a>
          
           </li>
           <li>
-             <a href="#">Sell with us</a>
+             <a href="#" onClick={()=>history.push("new_seller")}>Sell with us</a>
          
           </li>
           <li>
@@ -37,4 +37,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Appbar;

@@ -9,7 +9,7 @@ const lst = [
 const Users = () => {
     return (
 
-        <div class="container card">
+        <div class="card">
           <Modal title="Create"><CreateEditUsers modal="modal"/></Modal>
         <div class="form row card-body">
           <table class="table table-striped table-responsive-sm">

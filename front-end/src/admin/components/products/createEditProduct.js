@@ -2,7 +2,7 @@ import React from "react";
 import InputField from "../../../common/layouts/inputField";
 const CreateEditProduct = () => {
   return (
-    <div class="card container">
+    <div class="card">
       <div class="form row card-body">
         <InputField
           label="Name"
@@ -13,8 +13,8 @@ const CreateEditProduct = () => {
         />
 
         <div class="col-md-6 mb-3">
-          <label htmlFor="validationTooltipUsername">Category</label>
-          {/* <div class="input-group">
+       
+          <div class="input-group">
             <div class="input-group-prepend">
               <span
                 class="input-group-text"
@@ -22,7 +22,7 @@ const CreateEditProduct = () => {
               >
                 Category
               </span>
-            </div> */}
+            </div>
             <select class="custom-select">
               <option selected>Open this select menu</option>
               <option value="1">One</option>
@@ -33,7 +33,7 @@ const CreateEditProduct = () => {
               Please choose a unique and valid username.
             </div>
           </div>
-        {/* </div> */}
+        </div>
 
         <InputField
           label="Quantity"
