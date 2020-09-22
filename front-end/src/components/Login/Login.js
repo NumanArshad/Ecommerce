@@ -12,7 +12,6 @@ const Login = (props) => {
     const dispatch = useDispatch()
   const { isAuthenticated,user:{role} } = useSelector(state => state.authReducer)
     if (isAuthenticated) {
-   
         roleRedirect(history,role)
     }
 

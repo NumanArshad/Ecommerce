@@ -30,7 +30,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        return !isAuthenticated && role !== "customer" ? (
+        return isAuthenticated && role == "customer" ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -48,7 +48,6 @@ const Root = () => (
       {/* <Route path="/" exact component=+{App} /> */}
 
       <Route path="/login" exact component={Login} />
-      <Route path="/signup" exact component={SignUp} />
       <ProtectedRoute path="/dashboard" exact component={Dashboard} />
       <ProtectedRoute path="/products" exact component={Products} />
       <AdminSetting path="/admin/dashboard/:page?" component={AdminContent} />
@@ -58,7 +57,7 @@ const Root = () => (
       <Route path="/preview" component={AddProduct} />
       <Route path="/cart" component={ShoppingCart} />
       <Route path="/new_seller" component={NewSeller} />
-      <Route path="/signup2" component={NewSeller} />
+      <Route path="/signup" component={NewSeller} />
       <Redirect from="/" exact to="/home" />
       <Route path="*" exact component={() => <h2>Not not found</h2>} />
     </Switch>

@@ -12,7 +12,7 @@ const Appbar = () => {
         <i class="fa fa-bars"></i>
       </div>
       <div class="menu_content">
-        <span class="logo">KhareedLo</span>
+        <span class="logo">E Commerce</span>
         <ul>
           <li>
             <a href="#" onClick={()=>history.push("home")}>Home</a>

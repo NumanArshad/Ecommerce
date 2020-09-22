@@ -3,6 +3,8 @@ import authReducer from './auth';
 import productReducer from './products';
 import loadingReducer from "./loadingReducer"
 import categoryReducer from "../admin/reducer/categoryReducer"
+// import productReducer from "../admin/reducer/productReducer"
+
 import userReducer from "../admin/reducer/userReducer"
 const rootReducer = combineReducers({
     authReducer,

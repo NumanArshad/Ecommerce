@@ -11,7 +11,7 @@ const Appbar = () => {
         <i class="fa fa-bars"></i>
       </div>
       <div class="menu_content">
-        <span class="logo">KhareedLo</span>
+      <span class="logo">E Commerce</span>
         <ul>
           <li onClick={() => history.push("/admin/dashboard")}>
             <a href="#">Home</a>

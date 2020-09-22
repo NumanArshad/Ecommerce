@@ -1,19 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "../../../common/layouts/inputField";
+import { allCategory } from "../../actions/categoryActions";
+import { useDispatch, useSelector } from "react-redux";
+import {newProduct} from "../../actions/productsActions"
 const CreateEditProduct = () => {
+  const [formData, handleForm] = useState({
+    name: "",
+    categoryId: "",
+    quantity: "",
+    price: ""
+  });
+
+  const {name,categoryId,quantity,price}=formData
+  const { categories } = useSelector(state => state.categoryReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(allCategory("all"));
+  }, []);
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    handleForm({ ...formData, [name]: value });
+   
+  };
+
+  const handleSubmit=()=>{
+    dispatch(newProduct(formData))
+    handleForm({  name: "",
+    categoryId: "",
+    quantity: "",
+    price: ""})
+  }
   return (
     <div class="card">
       <div class="form row card-body">
         <InputField
           label="Name"
           name="name"
+          value={name}
           placeholder="name here"
           classes="col-md-6 mb-3"
-          
+          onChange={handleChange}
         />
 
         <div class="col-md-6 mb-3">
-       
           <div class="input-group">
             <div class="input-group-prepend">
               <span
@@ -23,11 +53,15 @@ const CreateEditProduct = () => {
                 Category
               </span>
             </div>
-            <select class="custom-select">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select" onChange={handleChange}
+            value={categoryId} name="categoryId">
+              {categories.map(({ id, name }, index) => {
+                return index == 0 ? (
+                  <option>Open this select menu</option>
+                ) : (
+                  <option value={id}>{name}</option>
+                );
+              })}
             </select>
             <div class="invalid-tooltip">
               Please choose a unique and valid username.
@@ -38,16 +72,20 @@ const CreateEditProduct = () => {
         <InputField
           label="Quantity"
           name="quantity"
+          value={quantity}
+          onChange={handleChange}
           placeholder="quantity here"
           classes="col-md-6 mb-3"
         />
         <InputField
           label="Price"
           name="price"
+          value={price}
           classes="col-md-6 mb-3"
+          onChange={handleChange}
           placeholder="price here"
         />
-        <button class="btn btn-primary ml-3">Save</button>
+        <button class="btn btn-primary ml-3" onClick={handleSubmit}>Save</button>
         <button class="btn btn-danger ml-2">Cancel</button>
       </div>
     </div>

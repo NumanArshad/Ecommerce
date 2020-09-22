@@ -1,12 +1,11 @@
 import axios from "../utils/httpInterceptors"
 import {AUTH_SUCCESS} from "../utils/types"
-
+import history from "../utils/customHistory"
 import JwtDecode from "jwt-decode"
 export const login=(authBody)=>dispatch=>{
   axios.post("/login",authBody)
   .then(res=>
     {
-        alert(JSON.stringify(res.data))
         if(res.status===200){
             dispatch(storeUser(res.data.token))
         }
@@ -14,7 +13,8 @@ export const login=(authBody)=>dispatch=>{
 })
 }
 export const register=(authBody)=>dispatch=>{
-    axios.post("/register",authBody).then(res=>{ if(res.status===200){
+    axios.post("/register",authBody).then(res=>{ 
+        if(res.status===200){
         dispatch(storeUser(res.data.token))
     }
     })
@@ -22,6 +22,7 @@ export const register=(authBody)=>dispatch=>{
 
 export const logout=()=>dispatch=>{
     localStorage.clear()
+    history.replace('/login')
 }
 
 export const decodeJwt=token=>{

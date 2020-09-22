@@ -1,21 +1,29 @@
-import {ALL_CATEGORIIES,START_LOADING,STOP_LOADING} from "../../utils/types"
-import axios from "../../utils/httpInterceptors"
+import {
+  ALL_CATEGORIIES,
+  START_LOADING,
+  STOP_LOADING
+} from "../../utils/types";
+import axios from "../../utils/httpInterceptors";
+import updateQuery from "../../utils/queryParser"
+export const newCategory = category => dispatch => {
+  axios
+    .post("/categories", category)
+    .then(res => alert(JSON.stringify(res.data))
+        //dispatch(allCategory())
 
-export const newCategory=(category)=>dispatch=>{
+)
+    .catch(err => alert(JSON.stringify(err)));
+};
 
-axios.post("/categories",category).then(res=>dispatch(allCategory()))
-.catch(err=>alert(JSON.stringify(err)))
-}
+export const allCategory = params => dispatch => {
+  //console.log("callled");
+  dispatch({ type: START_LOADING });
+  axios
+    .get(`/categories?${params!=="all" ?  updateQuery(params):``}`)
+    .then(res => {
+      dispatch({ type: STOP_LOADING });
 
-
-export const allCategory=(targetpage)=>dispatch=>{
-    console.log("callled")
-    dispatch({type:START_LOADING})
-    axios.get(`/categories?_page=${targetpage}&_limit=${5}`).then(res=>{
-        dispatch({type:STOP_LOADING})
-
-        dispatch({type:ALL_CATEGORIIES,payload:res.data})
-}
-    )
-    .catch(err=>alert(JSON.stringify(err)))
-}
+      dispatch({ type: ALL_CATEGORIIES, payload: res.data });
+    })
+    // .catch(err => alert(JSON.stringify(err)));
+};

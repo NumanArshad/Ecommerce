@@ -6,6 +6,10 @@ import ReactPaginate from "react-paginate";
 import Modal from "../../../common/layouts/modal";
 import Autocomplete from "react-autocomplete";
 import CreateEditCategory from "./createEditCategories";
+import queryString from "query-string";
+import isEmpty from "../../../utils/isEmpty";
+import { useHistory, useLocation } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 const lst = [
   { id: 1, name: "lwmk", Descriptiom: "lwlgmrmk ksfndne md n dk" },
   { id: 1, name: "lwmk", Descriptiom: "lwdk" },
@@ -13,147 +17,144 @@ const lst = [
   { id: 1, name: "lwmk", Descriptiom: "lwdk" }
 ];
 const Categories = () => {
-  const [paginateState, setPaginate] = useState({ total_pages: 0 });
-  const { total_pages } = paginateState;
   const { categories } = useSelector(state => state.categoryReducer);
   const { loading } = useSelector(state => state.loadingReducer);
-  const [bit, setBit] = useState(false);
-  const [vl, setValue] = useState("");
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(allCategory(1));
-  }, [dispatch]);
+  const location = useLocation();
 
+  const parsed=queryString.parse(location.search)
+ const [pageNumber]=useState(parsed._start/2 || 0)
+const [sort,setSort]=useState({key:parsed._sort || "id",order:parsed._order || "desc"})
   useEffect(() => {
-    console.log("change loading state", loading);
-    console.dir(categories);
-    if (!loading && categories.length && !bit) {
-      console.log("has been", Math.ceil(11 / 5));
-      setPaginate(prevState => ({ ...prevState, total_pages: 3 }));
-      setBit(true);
-    }
-  }, [loading, categories]);
+    dispatch(allCategory(location.search));
+  }, [dispatch, location]);
+
+  const history = useHistory();
+
 
   const handlePageClick = event => {
-    dispatch(allCategory(event.selected + 1));
+    // const queryParams = {};
+    // queryParams._start = event.selected * 2;
+    // history.push(
+    //   `/seller/dashboard/categories?${event.selected>0 ? queryString.stringify(queryParams):``}`
+    // );
+    updateUrl(event.selected * 2,sort.key,sort.order)
   };
+
+  const handleSort=key=>{
+    alert(key)
+    let sortType="desc";
+    if(sort.key===key && sort.order==="desc"){
+      sortType="asc"
+    }
+    setSort({key:key,order:sortType})
+    updateUrl(parsed._start,key,sortType)
+
+  }
+
+  const updateUrl=(offset,sortBy,order)=>{
+    const queryParams={}
+    if(offset) queryParams._start=offset;
+  if(sortBy)  queryParams._sort=sortBy;
+   if(order) queryParams._order=order
+    history.push(
+      `/seller/dashboard/categories?${queryString.stringify(queryParams)}`
+    );
+  }
+
+
 
   return (
     <div class="container card">
       <div class="form row card-body">
+        {loading && <span>...loading</span>}
         <table class="table table-striped table-responsive-sm">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
+              <th scope="col" onClick={()=>handleSort("id")}>#
+              {sort.key === "id" && 
+                  <i
+                    class={`fa fa-chevron-${
+                      sort.order === "desc" ? `down` : "up"
+                    }`}
+                    aria-hidden="true"
+              ></i>}
+              </th>
+              <th scope="col" onClick={()=>handleSort("name")}>Name
+              {sort.key === "name" && 
+                  <i
+                    class={`fa fa-chevron-${
+                      sort.order === "desc" ? `down` : "up"
+                    }`}
+                    aria-hidden="true"
+              ></i>}
+              </th>
+              <th scope="col">Descriptiom</th>
+              {/* <th scope="col">Handle</th>
               <th scope="col">Last</th>
               <th scope="col">Handle</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-              <th scope="col">Actions</th>
+              <th scope="col">Actions</th> */}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-              <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
-                  <button
-                    type="button"
-                    class="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Action
-                  </button>
-                  <div class="dropdown-menu w-25">
-                    <a class="dropdown-item" href="#">
-                      View
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Edit
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Delete
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-                <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
-                  <button
-                    type="button"
-                    class="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Action
-                  </button>
-                  <div class="dropdown-menu w-25">
-                    <a class="dropdown-item" href="#">
-                      View
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Edit
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Delete
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-              <div class="btn-group" style={{margin:'-4px 0px -4px 0px'}}>
-                  <button
-                    type="button"
-                    class="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Action
-                  </button>
-                  <div class="dropdown-menu w-25">
-                    <a class="dropdown-item" href="#">
-                      View
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Edit
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Delete
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            {categories.map(({ id, name, description }) => {
+              return (
+                <tr>
+                  <th scope="row">{id}</th>
+                  <td>{name}</td>
+                  <td>{description}</td>
+
+                  <td>
+                    <div
+                      class="btn-group"
+                      style={{ margin: "-4px 0px -4px 0px" }}
+                    >
+                      <button
+                        type="button"
+                        class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Action
+                      </button>
+                      <div class="dropdown-menu w-25">
+                        <a class="dropdown-item" href="#">
+                          View
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          Edit
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          Delete
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
+        <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={4}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          forcePage={pageNumber}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
+        />
       </div>
+   {loading &&   <Skeleton count={3} />}
+  
+
     </div>
     // <div className={common.table_container}>
     // <Modal title="Create">

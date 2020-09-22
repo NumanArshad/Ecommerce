@@ -1,12 +1,12 @@
-import {ALL_USERS} from "../../utils/types"
+import {ALL_PRODUCTS} from "../../utils/types"
 
 const initialState={
-    users:[]
+    products:[]
 }
 export default function (state=initialState,action){
     switch(action.type){
-        case ALL_USERS:
-            return {...state,users:action.payload}
+        case ALL_PRODUCTS:
+            return {...state,products:action.payload}
         default:
             return state
     }

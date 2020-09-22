@@ -12,12 +12,12 @@ const Appbar = () => {
       </div>
       <div class="menu_content">
         <span class="logo">KhareedLo</span>
-        <ul>
-          <li onClick={() => history.push("/seller/dashboard")}>
-            <a href="#">Home</a>
+        <ul class="nav_bar">
+          <li  class="nav_link" onClick={() => history.push("/seller/dashboard")}>
+            <a class="nav_content" href="#">Home</a>
           </li>
          
-          <li>
+          <li class="nav_link">
             <a href="#" class="toggle_btn">
               Products
             </a>
@@ -41,7 +41,7 @@ const Appbar = () => {
             </ul>
           </li>
 
-             <li>
+             <li class="nav_link">
             <a href="#" class="toggle_btn">
               Categories
             </a>
@@ -65,45 +65,16 @@ const Appbar = () => {
             </ul>
           </li>
 
-          <li>
-            <a href="#">Services</a>
+          <li class="nav_link">
+            <a class="nav_content" href="#">Services</a>
           </li>
-          <li>
-            <a href="#">Contacts</a>
+          <li class="nav_link">
+            <a class="nav_content" href="#">Contacts</a>
           </li>
         </ul>
       </div>
     </>
-    // <div className={`${style.container} ${style.responsive}`}>
-    //     <div onClick={()=>history.push("/seller/dashboard")}>
-    //         Home
-    //   </div>
-    //     <div  onClick={()=>history.push("/seller/dashboard/users")}>Users</div>
-
-    //     <div className={style.dropdown}>
-    //         Products
-    //         <div className={style.dropdown_content}>
-    //             <div onClick={()=>history.push("/seller/dashboard/products/new")}>Add Products </div>
-    //             <div onClick={()=>history.push("/seller/dashboard/products")}>All Products</div>
-    //         </div>
-    //    </div>
-
-    //    <div className={style.dropdown}>
-    //         Categories
-    //         <div className={style.dropdown_content}>
-    //             <div onClick={()=>history.push("/seller/dashboard/categories/new")}>Add Category </div>
-    //             <div onClick={()=>history.push("/seller/dashboard/categories")}>All Categories</div>
-    //         </div>
-    //    </div>
-    //     <div className={style.dropdown}>
-    //         Logout
-    //         <div className={style.dropdown_content}>
-    //             <div>View profile </div>
-    //             <div onClick={()=>history.replace("/login")}>Logout</div>
-    //         </div>
-    //    </div>
-
-    // </div>
+    
   );
 };
 

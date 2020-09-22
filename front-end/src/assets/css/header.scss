@@ -9,13 +9,13 @@
   padding: 20px;
 }
 
-ul {
+.nav_bar {
   display: flex;
   text-align: center;
   flex: 1;
   margin: 0;
   justify-content: flex-end;
-  li {
+  .nav_link {
     padding: 5px;
     width: 200px;
     position: relative;
